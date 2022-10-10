@@ -1,0 +1,1 @@
+double * solveEq(double a , double b  , double c);
