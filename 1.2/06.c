@@ -42,18 +42,18 @@ int main(void)
 
         printf("\n");
 
-        for (i = 0; i < myNumN; ++i)
-        {
+        // for (i = 0; i < myNumN; ++i)
+        // {
 
-            printf("%d ", (1 + i));
-            if((i+1%myNumM)/myNumM ==0){
-                printf("\n");
-            }
-            // for (j = 0; j < myNumN; j + myNumM)
-            // {
-            //     printf("\n");
-            // }
-        }
+        //     printf("%d ", (1 + i));
+        //     if((i+1%myNumM)/myNumM ==0){
+        //         printf("\n");
+        //     }
+        //     // for (j = 0; j < myNumN; j + myNumM)
+        //     // {
+        //     //     printf("\n");
+        //     // }
+        // }
 
         return 0;
     }

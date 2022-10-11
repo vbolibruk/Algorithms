@@ -1,7 +1,7 @@
 // 2. Винести функцію розв'язування квадратного рівняння в окремий файл. Винести вивід розв'язку квадратного рівняння в окрему функцію.
 
 // to build and run
-// gcc -Wall -c 01.c && gcc -Wall -c functions.c &&  gcc -o  testprogram functions.o 01.o  && ./testprogra
+// gcc -Wall -c 01.c && gcc -Wall -c functions.c &&  gcc -o  testprogram functions.o 01.o  && ./testprogram
 #include <stdio.h>
 #include "functions.h"
 
