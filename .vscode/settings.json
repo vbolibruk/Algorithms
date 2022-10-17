@@ -42,6 +42,10 @@
     "ostream": "c",
     "__tuple": "c",
     "array": "c",
-    "time.h": "c"
+    "time.h": "c",
+    "__locale": "c",
+    "functional": "c",
+    "bitset": "c",
+    "*.tcc": "c"
   }
 }
