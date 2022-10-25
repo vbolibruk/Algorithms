@@ -46,6 +46,7 @@
     "__locale": "c",
     "functional": "c",
     "bitset": "c",
-    "*.tcc": "c"
+    "*.tcc": "c",
+    "sdl.h": "c"
   }
 }
