@@ -1,70 +1,77 @@
 // 3. Написати програму, яка розкладає задане число на прості множники. Наприклад: 140: 2*2*5*7
 #include <stdio.h>
 #include <stdbool.h>
-int commonDiv(int a, int b);
-bool isPrime(int n);
-int main() {
-        SDL_Init(SDL_INIT_VIDEO);
-        return 0;
-    }
+
+bool isPrime(int a, int b);
+long fact(int n);
 
 
-int main()
+// Function to calculate the factorial
+long fact(int n)
 {
-    int firstN, secondN, tempStor, i;
+    int factm = 1;
+    int m = n - 1;
 
-    printf("Enter 1st num \n");
-    scanf("%d", &firstN);
-
-    printf("Enter 2nd num \n");
-    scanf("%d", &secondN);
-
-    // make sure firstN  always big one
-    if (secondN > firstN)
+    // find factorial of n-1
+    for (int i = 1; i <= m; i++)
     {
-        tempStor = secondN;
-        firstN = secondN;
-        secondN = tempStor;
+        factm *= i;
     }
-    if(isPrime(35437)){
-         printf("number is prime!");
-    }else {
-
-    }
-    // i = commonDiv(firstN,secondN);
-    printf("Greates common div num %d \n", i);
-    return 0;
+    return factm;
 }
 
-int commonDiv(int a, int b)
+// Function to check if the
+// number is prime or not
+bool isPrime(int factm, int n)
 {
-    if (b == 0)
+    // add 1 to (n-1)!
+    int factn = factm + 1;
+    if (factn % n == 0)
     {
-        return a;
+        // if remainder is 0
+        // printf(" %d  is prime number", n);
+        return true;
     }
     else
     {
-        return commonDiv(b, a % b);
-    }
-}
-
-
-bool isPrime(int n)
-{
-    int counter = 0;
-    // Corner case
-    if (n <= 1){
+        // printf("%d  is not prime number", n);
         return false;
     }
-        
-    for (int i = 2; i < n; i++){
-        if (n % i == 0){
-            counter++;
-            break;
+    return 0;
+}
+int main()
+{
+
+    int n, div = 2;
+    int ii = 0;
+    int arr[1000];
+
+    printf("Enter num \n");
+    scanf("%d", &n);
+
+    long factm = fact(n);
+    bool isPrimeFlag = isPrime(factm, n);
+    if (isPrimeFlag)
+    {
+        printf("number is prime! \n no dividers");
+    }
+    else
+    {
+        while (n > 1)
+        {
+            while (n % div == 0)
+            {
+                arr[ii] = div;
+                n = n / div;
+                ii++;
+            }
+            div++;
+        }
+        for (int i = 0; i < ii; i++)
+        {
+            printf("%d i dividor = %d  \n ",i, arr[i]);
         }
     }
-    if(counter == 0) 
-        return true;
-    return false;
-}
 
+    return 0;
+}

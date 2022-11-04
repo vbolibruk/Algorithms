@@ -47,6 +47,7 @@
     "functional": "c",
     "bitset": "c",
     "*.tcc": "c",
-    "sdl.h": "c"
+    "sdl.h": "c",
+    "assert.h": "c"
   }
 }
