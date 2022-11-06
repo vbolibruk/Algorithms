@@ -12,7 +12,7 @@ int main()
 
     result1=customRecursion(n);
 
-    printf("1st n! = %d  \n ",result1);
+    printf("1+2+...+N = %d  \n ",result1);
     return 0;
 }
 
