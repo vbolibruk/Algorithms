@@ -7,6 +7,33 @@ void swap(int *a, int *b);
 int findMinInArray(int array[], int arraySize);
 void multiply(int arraySizeI, int arraySizeJ, int array[arraySizeI][arraySizeJ], int mult);
 
+#define rows1 2 // number of rows in Matrix-1
+#define columns1 2 // number of columns in Matrix-1
+#define rows2 2 // number of rows in Matrix-2
+#define columns2 2 // number of columns in Matrix-2
+  
+void mulMat(int mat1[][columns1], int mat2[][columns2])
+{
+    int resultM[rows1][columns2];
+  
+    printf("Multiplication of given two matrices is:\n");
+  
+    for (int i = 0; i < rows1; i++) {
+        for (int j = 0; j < columns2; j++) {
+            resultM[i][j] = 0;
+  
+            for (int k = 0; k < rows2; k++) {
+                resultM[i][j] += mat1[i][k] * mat2[k][j];
+            }
+  
+            printf("%d\t", resultM[i][j]);
+        }
+  
+        printf("\n");
+    }
+}
+
+
 int main(void)
 {
 
@@ -36,6 +63,26 @@ int main(void)
     // {
     //     printf("%d, ", ptr[i]);
     // }
+
+
+    int mat1[rows1][columns1] = { { 1, 1 },
+                         { 4, 4 } };
+  
+    int mat2[rows2][columns2] = { { 1, 1 },
+                         { 3, 3 } };
+  
+  
+    if (columns1 != rows2) {
+        printf("The number of columns in Matrix-1  must be "
+               "equal to the number of rows in "
+               "Matrix-2\n");
+               return 0;
+  
+    }
+  
+      // Function call
+    mulMat(mat1, mat2);
+
     return 0;
 }
 
