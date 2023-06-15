@@ -24,6 +24,7 @@
 #include <time.h>
 void swap(int *a, int *b);
 void insertionSort(int array[], int arraySize);
+void sort(int array[], int arraySize);
 
 int main(void)
 {
@@ -42,7 +43,7 @@ int main(void)
         ptr[i] = rand() % 10;
         printf("%d, ", ptr[i]);
     }
-    insertionSort(ptr, arraySize);
+    sort(ptr, arraySize);
     printf("\n");
     printf("The sorted elements of the array are: ");
 
@@ -77,5 +78,37 @@ void insertionSort(int array[], int arraySize)
             j = j - 1;
         }
         array[j + 1] = value;
+    }
+}
+
+// void insertionSort(int arr[], int n)
+// {
+//     int i, key, j;
+//     for (i = 1; i < n; i++) {
+//         key = arr[i];
+//         j = i - 1;
+ 
+//         /* Move elements of arr[0..i-1], that are
+//           greater than key, to one position ahead
+//           of their current position */
+//         while (j >= 0 && arr[j] > key) {
+//             arr[j + 1] = arr[j];
+//             j = j - 1;
+//         }
+//         arr[j + 1] = key;
+//     }
+// }
+
+
+void sort(int arr[], int n){
+    int i,key,j;
+    for(i=1;i<n;i++){
+        key = arr[i];
+        j = i-1;
+        while(j>=0&&arr[j]>key){
+            arr[j+1] =  arr[j]; 
+            j= j-1;
+        }
+        arr[j+1] = key;
     }
 }

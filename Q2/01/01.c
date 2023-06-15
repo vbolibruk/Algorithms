@@ -45,25 +45,46 @@ void swap(int *a, int *b)
 }
 
 // bubble sort sample
+// void sort(int *array, int arraySize)
+// {
+//     int i, j;
+//     int num1, num2;
+//     for (i = 0; i < arraySize; i++)
+//     {
+//         for (j = arraySize-1; j > i; j--)
+//         {
+//             if (array[j] < array[j - 1])
+//             {
+
+//                 num1 = array[j];
+//                 num2 = array[j - 1];
+//                 // printf("Before Swapping: num1 is: %d, num2 is: %d\n", num1, num2);
+//                 swap(&num1, &num2);
+//                 // printf("After  Swapping: num1 is: %d, num2 is: %d\n", num1, num2);
+//                 array[j] = num1;
+//                 array[j - 1] = num2;
+//             }
+//         }
+//     }
+// }
+
+
 void sort(int *array, int arraySize)
 {
-    int i, j;
     int num1, num2;
-    for (i = 0; i < arraySize; i++)
-    {
-        for (j = arraySize-1; j > i; j--)
-        {
-            if (array[j] < array[j - 1])
-            {
 
+    for(int i=0; i<arraySize-1;i++){
+        for(int j=0; j<arraySize-1;j++){
                 num1 = array[j];
-                num2 = array[j - 1];
-                // printf("Before Swapping: num1 is: %d, num2 is: %d\n", num1, num2);
-                swap(&num1, &num2);
-                // printf("After  Swapping: num1 is: %d, num2 is: %d\n", num1, num2);
-                array[j] = num1;
-                array[j - 1] = num2;
-            }
+                num2 = array[j+ 1];
+
+                
+                if(num1>num2){
+                array[j] = num2;
+                array[j + 1] = num1;
+
+                }
         }
+
     }
 }
