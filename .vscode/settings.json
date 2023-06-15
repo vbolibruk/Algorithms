@@ -48,7 +48,8 @@
     "bitset": "c",
     "*.tcc": "c",
     "sdl.h": "c",
-    "assert.h": "c"
+    "assert.h": "c",
+    "__node_handle": "c"
   },
   "C_Cpp.errorSquiggles": "disabled"
 }

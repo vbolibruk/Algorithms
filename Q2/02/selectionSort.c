@@ -62,24 +62,44 @@ void swap(int *a, int *b)
 }
 
 // selection sort sample
-void selectionSort(int array[], int arraySize)
-{
-    int i, j, min_index;
-    int num1, num2;
-    for (i = 0; i < arraySize; i++)
-    {
-        min_index = i;
-        for (j = i + 1; j < arraySize; j++)
-        {
-            if (array[j] < array[min_index])
-            {
-                min_index = j;
-            }
+// void selectionSort(int array[], int arraySize)
+// {
+//     int i, j, min_index;
+//     int num1, num2;
+//     for (i = 0; i < arraySize; i++)
+//     {
+//         min_index = i;
+//         for (j = i + 1; j < arraySize; j++)
+//         {
+//             if (array[j] < array[min_index])
+//             {
+//                 min_index = j;
+//             }
 
-        }
-                    if (min_index != i)
+//         }
+//                     if (min_index != i)
+//             {
+//                 swap(&array[min_index], &array[i]);
+//             }
+//     }
+// }
+
+void selectionSort(int array[], int n)
+{
+    int i, j, k, min_idx;
+    for (i = 0; i < n - 1; i++)
+    {
+        min_idx = i;
+        for (j = i + 1; j < n; j++)
+        {
+            if (array[j] < array[i])
             {
-                swap(&array[min_index], &array[i]);
+                min_idx = j;
             }
+            if (min_idx != i)
+            {
+                swap(&array[j], &array[i]);
+            }
+        }
     }
 }
