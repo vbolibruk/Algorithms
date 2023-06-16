@@ -46,21 +46,40 @@ void List_Insert(int k) {
     head = p;
 }
 
-void List_InsertAfter(obj* prevNode, int k) {
-    if (prevNode == NULL) {
+void List_InsertAfter(obj* afterNode, int k) {
+    if (afterNode == NULL) {
         printf("Попередній вузол не може бути NULL!\n");
         return;
     }
 
     obj* newNode = (obj*)malloc(sizeof(obj));
     newNode->key = k;
-    newNode->next = prevNode->next;
-    prevNode->next = newNode;
+    newNode->next = afterNode->next;
+    newNode->prev = afterNode;
+    afterNode->next = newNode;
+
 
     newNode->next = nextNode->next;
     nextNode->next = newNode;
 
 }
+
+void List_Insert(Node* prevNode, Node* newNode) {
+    if (prevNode == NULL) {
+        // Если prevNode равен NULL, вставка невозможна
+        printf("Ошибка: Неверный узел для вставки.\n");
+        return;
+    }
+
+    newNode->next = prevNode->next;
+    newNode->prev = prevNode;
+    
+    if (prevNode->next != NULL) {
+        prevNode->next->prev = newNode;
+    }
+    prevNode->next = newNode;
+}
+
 
 void List_Delete(obj *p) {
     obj *prev;

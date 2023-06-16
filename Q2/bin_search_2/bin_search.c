@@ -15,6 +15,7 @@ typedef struct tree_node tnode;
 
 tnode *root = NIL;
 tnode *root2 = NIL;
+void TreeWalk(tnode* root);
 
 void InorderTreeWalk(tnode *x)
 {
@@ -149,43 +150,105 @@ void BuildTree(void)
             NIL,
             create_tnode(8, NIL, NIL)));
 }
-tnode *TreeInsert(tnode *root, int key)
-{
-    tnode *newNode = create_tnode(key, NULL, NULL);
-    if (root == NULL)
-    {
-        // Дерево пустое, создаем новый узел
+// tnode *TreeInsert(tnode *root, int key)
+// {
+//     tnode *newNode = create_tnode(key, NULL, NULL);
+//     if (root == NULL)
+//     {
+//         // Дерево пустое, создаем новый узел
         
-        return newNode;
-    }
+//         return newNode;
+//     }
 
-    if (key < root->key)
-    {
-        // Вставляем в левое поддерево
-        if (root->left == NULL)
-        {
-            root->left = newNode;
-        }
-        else
-        {
-            root->left = TreeInsert(root->left, key);
+//     if (key < root->key)
+//     {
+//         // Вставляем в левое поддерево
+//         if (root->left == NULL)
+//         {
+//             root->left = newNode;
+//         }
+//         else
+//         {
+//             root->left = TreeInsert(root->left, key);
+//         }
+//     }
+//     else if (key > root->key)
+//     {
+//         // Вставляем в правое поддерево
+
+//         if (root->right == NULL)
+//         {
+//             root->right = newNode;
+//         }
+//         else
+//         {
+//             root->right = TreeInsert(root->right, key);
+//         }
+//     }
+
+//     return root;
+// }
+
+
+tnode* TreeInsert(tnode* root, int key) {
+    tnode* newNode = create_tnode(key, NULL, NULL);  // Создаем новый узел с заданным ключом
+    
+    if (root == NULL) {
+        return newNode;  // Дерево пустое, новый узел становится корнем
+    }
+    
+    tnode* current = root;
+    
+    while (1) {
+        if (key < current->key) {
+            if (current->left == NULL) {
+                current->left = newNode;  // Вставка в левое поддерево текущего узла
+                break;
+            } else {
+                current = current->left;  // Переходим к левому поддереву
+            }
+        } else if (key > current->key) {
+            if (current->right == NULL) {
+                current->right = newNode;  // Вставка в правое поддерево текущего узла
+                break;
+            } else {
+                current = current->right;  // Переходим к правому поддереву
+            }
+        } else {
+            // Узел с таким ключом уже существует, не выполняем вставку
+            free(newNode);
+            break;
         }
     }
-    else if (key > root->key)
-    {
-        // Вставляем в правое поддерево
-
-        if (root->right == NULL)
-        {
-            root->right = newNode;
-        }
-        else
-        {
-            root->right = TreeInsert(root->right, key);
-        }
-    }
-
+    
     return root;
+}
+
+
+
+
+
+void TreeWalk(tnode* root) {
+    if (root == NULL) {
+        return;  // Базовый случай: дерево пустое
+    }
+    
+    tnode* stack[100];  // Стек для хранения узлов
+    int top = -1;  // Вершина стека
+    
+    tnode* current = root;
+    
+    while (current != NULL || top != -1) {
+        while (current != NULL) {
+            stack[++top] = current;  // Помещаем узел в стек
+            current = current->left;  // Движемся к самому левому узлу
+        }
+        
+        current = stack[top--];  // Извлекаем узел из стека и печатаем его значение
+        printf("%d ", current->key);
+        
+        current = current->right;  // Движемся к правому поддереву
+    }
 }
 
 int main(void)
@@ -220,7 +283,8 @@ int main(void)
     printf("The maximum element is %i\n", p->key);
     // p = TreeMaximumRecursive(root);
     // printf("The maximum element is %i\n", p->key);
-
+    TreeWalk(root);
+    TreeWalk(root);
     return 0;
 }
 

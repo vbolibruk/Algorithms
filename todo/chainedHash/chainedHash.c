@@ -47,6 +47,7 @@ int main(void) {
         printf("Key not found!\n");
 
     Chained_Hash_Delete(15);
+    Chained_Hash_Delete(22);
     Chained_Hash_Print_Table();
     Chained_Hash_Delete(59);
     Chained_Hash_Print_Table();
@@ -100,12 +101,12 @@ obj *Chained_Hash_Search(int k) {
 
 //     // ???
 // }
+
+// delete x from the list T[ h(x->key) ]
 void Chained_Hash_Delete(int k) {
     int j = h(k);
-    obj *head, *prev;
-
-    head = T[j];
-    prev = NULL;
+    obj *head = T[j];
+    obj *prev = NULL;
 
     while (head != NIL && head->key != k) {
         prev = head;
@@ -113,21 +114,21 @@ void Chained_Hash_Delete(int k) {
     }
 
     if (head == NIL) {
-        // Елемент не знайдено
+        printf("Key not found!\n");
         return;
     }
 
     if (prev == NULL) {
-        // Видаляємо перший елемент списку
+        // Видаляємо перший вузол списку
         T[j] = head->next;
     } else {
-        // Видаляємо елемент зсередини або з кінця списку
+        // Видаляємо вузол з середини або кінця списку
+        // 1 2 3 
         prev->next = head->next;
     }
 
     free(head);
 }
-
 
 // print hash table
 void Chained_Hash_Print_Table(void) {
@@ -145,4 +146,3 @@ void Chained_Hash_Print_Table(void) {
     }
     printf("\n");
 }
-

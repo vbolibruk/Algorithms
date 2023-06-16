@@ -15,14 +15,14 @@ void multiply(int arraySizeI, int arraySizeJ, int array[arraySizeI][arraySizeJ],
 void mulMat(int mat1[][columns1], int mat2[][columns2])
 {
     int resultM[rows1][columns2];
-  
+//   ROWS_A x COLS_B
     printf("Multiplication of given two matrices is:\n");
   
     for (int i = 0; i < rows1; i++) {
         for (int j = 0; j < columns2; j++) {
             resultM[i][j] = 0;
   
-            for (int k = 0; k < rows2; k++) {
+            for (int k = 0; k < columns1; k++) {
                 resultM[i][j] += mat1[i][k] * mat2[k][j];
             }
   
